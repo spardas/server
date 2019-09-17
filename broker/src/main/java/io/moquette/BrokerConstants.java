@@ -99,6 +99,7 @@ public final class BrokerConstants {
     public static final String TOKEN_SECRET_KEY = "token.key";
 
     public static final String EMBED_DB_PROPERTY_NAME = "embed.db";
+    public static final String FLY_WAY_PROPERTY_NAME = "flyway.path";
 
     public static final String HZ_Cluster_Master_Node = "master_node";
 
