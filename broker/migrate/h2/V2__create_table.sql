@@ -58,7 +58,7 @@ CREATE TABLE `t_user_status` (
   `_uid` varchar(64) NOT NULL,
   `_status` int(11) NOT NULL DEFAULT 0,
   `_dt` bigint(20) NOT NULL,
-  UNIQUE INDEX `user_status_uid_index` (`_uid` ASC),
+  UNIQUE INDEX `user_status_uid_index` (`_uid` ASC)
 );
 
 DROP TABLE IF EXISTS `t_friend_request`;

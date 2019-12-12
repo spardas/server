@@ -8,29 +8,27 @@
 
 package win.liyufan.im;
 
+import com.hazelcast.util.StringUtil;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+import io.moquette.BrokerConstants;
+import io.moquette.server.config.IConfig;
+import org.flywaydb.core.Flyway;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.beans.PropertyVetoException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.hazelcast.util.StringUtil;
-import com.mchange.v2.c3p0.ComboPooledDataSource;
-import io.moquette.BrokerConstants;
-import io.moquette.server.config.IConfig;
-import org.flywaydb.core.Flyway;
-import org.flywaydb.core.api.configuration.FlywayConfiguration;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DBUtil {
-    private static final Logger                          LOG                   = LoggerFactory.getLogger(DBUtil.class);
-    private static       ComboPooledDataSource           comboPooledDataSource = null;
-    private static       ConcurrentHashMap<Long, String> map                   = new ConcurrentHashMap<>();
-    private static       ThreadLocal<Connection>         transactionConnection = new ThreadLocal<Connection>() {
+    private static final Logger LOG = LoggerFactory.getLogger(DBUtil.class);
+    private static ComboPooledDataSource comboPooledDataSource = null;
+    private static ConcurrentHashMap<Long, String> map = new ConcurrentHashMap<>();
+    private static ThreadLocal<Connection> transactionConnection = new ThreadLocal<Connection>() {
         @Override
         protected Connection initialValue() {
             super.initialValue();
